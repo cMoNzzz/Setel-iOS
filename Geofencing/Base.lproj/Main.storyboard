@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MUw-Rf-Z4t">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
@@ -32,6 +32,11 @@
                                 <action selector="onTapCurrentLocation:" destination="BYZ-38-t0r" id="NuF-6f-StX"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dGK-OA-5Hy">
+                            <connections>
+                                <action selector="onTapAddPin:" destination="BYZ-38-t0r" id="H9j-nk-aLf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="ccQ-uK-qPF" id="TYn-f5-tSo"/>
@@ -39,7 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1143.4782608695652" y="6.6964285714285712"/>
+            <point key="canvasLocation" x="-1390" y="7"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2TF-kC-Np3">
@@ -56,10 +61,101 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkV-EN-NGh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1851" y="7"/>
+            <point key="canvasLocation" x="-2093" y="7"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UgD-GT-FzQ">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0wV-KZ-W4R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="UC2-4k-76u" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gK2-od-pAc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="DTQ-up-enZ" kind="relationship" relationship="rootViewController" id="u9Y-H9-S3e"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-672" y="7"/>
+        </scene>
+        <!--Add Geofence Area-->
+        <scene sceneID="Urr-ke-jgs">
+            <objects>
+                <viewController storyboardIdentifier="STLAddGeofenceViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DTQ-up-enZ" customClass="STLAddGeofenceViewController" customModule="Geofencing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bad-35-Hra">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbt-28-gTR">
+                                <rect key="frame" x="0.0" y="88" width="414" height="357"/>
+                            </mapView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddPin" translatesAutoresizingMaskIntoConstraints="NO" id="6pQ-GZ-DxJ">
+                                <rect key="frame" x="169.66666666666666" y="229" width="75" height="75"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radius" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9X-70-lUp">
+                                <rect key="frame" x="22.999999999999996" y="446" width="55.666666666666657" height="40"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QHr-rx-dGG">
+                                <rect key="frame" x="98" y="449" width="140" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XzJ-1p-EzK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QHr-rx-dGG" firstAttribute="top" secondItem="hbt-28-gTR" secondAttribute="bottom" constant="4" id="BSj-nP-iWj"/>
+                            <constraint firstItem="QHr-rx-dGG" firstAttribute="centerY" secondItem="p9X-70-lUp" secondAttribute="centerY" id="M8C-of-2j2"/>
+                            <constraint firstItem="p9X-70-lUp" firstAttribute="leading" secondItem="XzJ-1p-EzK" secondAttribute="leading" constant="23" id="N4H-DF-M5k"/>
+                            <constraint firstItem="6pQ-GZ-DxJ" firstAttribute="centerY" secondItem="hbt-28-gTR" secondAttribute="centerY" id="RQg-gp-HPx"/>
+                            <constraint firstItem="XzJ-1p-EzK" firstAttribute="bottom" secondItem="hbt-28-gTR" secondAttribute="bottom" constant="368" id="RjX-jk-J5Z"/>
+                            <constraint firstItem="hbt-28-gTR" firstAttribute="leading" secondItem="XzJ-1p-EzK" secondAttribute="leading" id="a2x-sp-zya"/>
+                            <constraint firstItem="p9X-70-lUp" firstAttribute="top" secondItem="hbt-28-gTR" secondAttribute="bottom" constant="1" id="aIq-HQ-JvK"/>
+                            <constraint firstItem="hbt-28-gTR" firstAttribute="top" secondItem="XzJ-1p-EzK" secondAttribute="top" id="oXa-E6-yvx"/>
+                            <constraint firstItem="QHr-rx-dGG" firstAttribute="leading" secondItem="p9X-70-lUp" secondAttribute="trailing" constant="19.333333333333343" id="rbG-Iw-Z1j"/>
+                            <constraint firstItem="XzJ-1p-EzK" firstAttribute="trailing" secondItem="QHr-rx-dGG" secondAttribute="trailing" constant="176" id="sBZ-yS-dGP"/>
+                            <constraint firstItem="hbt-28-gTR" firstAttribute="centerX" secondItem="Bad-35-Hra" secondAttribute="centerX" id="tRN-9A-Pzn"/>
+                            <constraint firstItem="XzJ-1p-EzK" firstAttribute="bottom" secondItem="QHr-rx-dGG" secondAttribute="bottom" constant="330" id="tzA-tG-BAf"/>
+                            <constraint firstItem="6pQ-GZ-DxJ" firstAttribute="centerX" secondItem="hbt-28-gTR" secondAttribute="centerX" id="xmo-JU-Vr9"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Add Geofence Area" id="CAd-0w-o7Q">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="x6x-HE-oyd">
+                            <connections>
+                                <action selector="onCancel:" destination="DTQ-up-enZ" id="gal-DT-iJC"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Add" id="zHd-4C-cE1">
+                                <connections>
+                                    <action selector="onAddAnnotation:" destination="DTQ-up-enZ" id="Agi-cY-oy9"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="CurrentLocation" id="Y32-h1-ZDc">
+                                <connections>
+                                    <action selector="onZoomUserLocation:" destination="DTQ-up-enZ" id="fa1-fy-pYI"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="hbt-28-gTR" id="p5P-Ym-xhq"/>
+                        <outlet property="radiusTextField" destination="QHr-rx-dGG" id="oaO-8f-9aE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dUf-ft-gJx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="23.831775700934578" y="6.4794816414686833"/>
         </scene>
     </scenes>
     <resources>
+        <image name="AddPin" width="75" height="75"/>
         <image name="CurrentLocation" width="15" height="15"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -8,19 +8,17 @@
 import Foundation
 import MapKit
 
-public class STLMapAnnotation:NSObject, MKAnnotation {
-    
+public class STLMapAnnotation: NSObject, MKAnnotation {
     public var coordinate: CLLocationCoordinate2D
     public var radius: CLLocationDistance
     public var identifier: String?
-    
+
     public init(coordinate: CLLocationCoordinate2D,
                 radius: CLLocationDistance,
-                identifier: String) {
-        
+                identifier: String)
+    {
         self.coordinate = coordinate
         self.radius = radius
         self.identifier = identifier
     }
-    
 }

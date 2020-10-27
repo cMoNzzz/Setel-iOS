@@ -19,6 +19,9 @@
 		F439A4EE2545E3CD00253CE0 /* STLLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F439A4ED2545E3CD00253CE0 /* STLLocationViewModel.swift */; };
 		F4894AFC2546F47200834DB3 /* MKMapView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4894AFB2546F47200834DB3 /* MKMapView+Utilities.swift */; };
 		F4899FBF2547FE8000B140C2 /* UIViewController+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4899FBE2547FE8000B140C2 /* UIViewController+Utilities.swift */; };
+		F4899FCF2548062500B140C2 /* STLAddGeofenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4899FCE2548062500B140C2 /* STLAddGeofenceViewController.swift */; };
+		F4899FDB25482E8400B140C2 /* Ultilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4899FDA25482E8400B140C2 /* Ultilities.swift */; };
+		F4899FE42548428E00B140C2 /* STLAddAnnotationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4899FE32548428E00B140C2 /* STLAddAnnotationProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		F439A4ED2545E3CD00253CE0 /* STLLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLLocationViewModel.swift; sourceTree = "<group>"; };
 		F4894AFB2546F47200834DB3 /* MKMapView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Utilities.swift"; sourceTree = "<group>"; };
 		F4899FBE2547FE8000B140C2 /* UIViewController+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utilities.swift"; sourceTree = "<group>"; };
+		F4899FCE2548062500B140C2 /* STLAddGeofenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLAddGeofenceViewController.swift; sourceTree = "<group>"; };
+		F4899FDA25482E8400B140C2 /* Ultilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ultilities.swift; sourceTree = "<group>"; };
+		F4899FE32548428E00B140C2 /* STLAddAnnotationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLAddAnnotationProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,12 +113,13 @@
 		F439A4AA2545C21200253CE0 /* Geofencing */ = {
 			isa = PBXGroup;
 			children = (
+				F4899FE2254841F700B140C2 /* Protocol */,
 				F4894B002546F47900834DB3 /* Extensions */,
+				F4899FCD2548060B00B140C2 /* Model */,
+				F4899FCC254805F400B140C2 /* UIViewControllers */,
 				F439A4E52545DFA700253CE0 /* STLMapAnnotation.swift */,
-				F439A4ED2545E3CD00253CE0 /* STLLocationViewModel.swift */,
 				F439A4AB2545C21200253CE0 /* AppDelegate.swift */,
 				F439A4AD2545C21200253CE0 /* SceneDelegate.swift */,
-				F439A4AF2545C21200253CE0 /* STLMainViewController.swift */,
 				F439A4B12545C21200253CE0 /* Main.storyboard */,
 				F439A4B42545C21500253CE0 /* Assets.xcassets */,
 				F439A4B62545C21500253CE0 /* LaunchScreen.storyboard */,
@@ -142,10 +149,36 @@
 		F4894B002546F47900834DB3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F4899FDA25482E8400B140C2 /* Ultilities.swift */,
 				F4894AFB2546F47200834DB3 /* MKMapView+Utilities.swift */,
 				F4899FBE2547FE8000B140C2 /* UIViewController+Utilities.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F4899FCC254805F400B140C2 /* UIViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F439A4AF2545C21200253CE0 /* STLMainViewController.swift */,
+				F4899FCE2548062500B140C2 /* STLAddGeofenceViewController.swift */,
+			);
+			path = UIViewControllers;
+			sourceTree = "<group>";
+		};
+		F4899FCD2548060B00B140C2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F439A4ED2545E3CD00253CE0 /* STLLocationViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F4899FE2254841F700B140C2 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F4899FE32548428E00B140C2 /* STLAddAnnotationProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,10 +311,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4899FDB25482E8400B140C2 /* Ultilities.swift in Sources */,
 				F4894AFC2546F47200834DB3 /* MKMapView+Utilities.swift in Sources */,
 				F439A4EE2545E3CD00253CE0 /* STLLocationViewModel.swift in Sources */,
 				F439A4B02545C21200253CE0 /* STLMainViewController.swift in Sources */,
 				F439A4E62545DFA700253CE0 /* STLMapAnnotation.swift in Sources */,
+				F4899FCF2548062500B140C2 /* STLAddGeofenceViewController.swift in Sources */,
+				F4899FE42548428E00B140C2 /* STLAddAnnotationProtocol.swift in Sources */,
 				F439A4AC2545C21200253CE0 /* AppDelegate.swift in Sources */,
 				F439A4AE2545C21200253CE0 /* SceneDelegate.swift in Sources */,
 				F4899FBF2547FE8000B140C2 /* UIViewController+Utilities.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import CoreLocation
 @testable import Geofencing
 
 class GeofencingTests: XCTestCase {
@@ -29,5 +30,16 @@ class GeofencingTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
+    
+    
+    func testLocationUpdate() {
+        let locations: [CLLocation] = [CLLocation(latitude: 12, longitude: 10)]
+            
+            let viewModel = STLLocationViewModel()
+            
+            viewModel.locationManager(CLLocationManager(), didUpdateLocations: locations)
+            
+            XCTAssertEqual(12, viewModel.userLatitude)
+            XCTAssertEqual(10, viewModel.userLongitude)
+        }
 }

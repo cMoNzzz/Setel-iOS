@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		F439A4AC2545C21200253CE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F439A4AB2545C21200253CE0 /* AppDelegate.swift */; };
 		F439A4AE2545C21200253CE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F439A4AD2545C21200253CE0 /* SceneDelegate.swift */; };
-		F439A4B02545C21200253CE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F439A4AF2545C21200253CE0 /* ViewController.swift */; };
+		F439A4B02545C21200253CE0 /* STLMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F439A4AF2545C21200253CE0 /* STLMainViewController.swift */; };
 		F439A4B32545C21200253CE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F439A4B12545C21200253CE0 /* Main.storyboard */; };
 		F439A4B52545C21500253CE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F439A4B42545C21500253CE0 /* Assets.xcassets */; };
 		F439A4B82545C21500253CE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F439A4B62545C21500253CE0 /* LaunchScreen.storyboard */; };
 		F439A4C32545C21500253CE0 /* GeofencingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F439A4C22545C21500253CE0 /* GeofencingTests.swift */; };
 		F439A4CE2545C21500253CE0 /* GeofencingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F439A4CD2545C21500253CE0 /* GeofencingUITests.swift */; };
+		F439A4E62545DFA700253CE0 /* STLMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F439A4E52545DFA700253CE0 /* STLMapAnnotation.swift */; };
+		F439A4EE2545E3CD00253CE0 /* STLLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F439A4ED2545E3CD00253CE0 /* STLLocationViewModel.swift */; };
+		F4894AFC2546F47200834DB3 /* MKMapView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4894AFB2546F47200834DB3 /* MKMapView+Utilities.swift */; };
+		F4899FBF2547FE8000B140C2 /* UIViewController+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4899FBE2547FE8000B140C2 /* UIViewController+Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +42,7 @@
 		F439A4A82545C21200253CE0 /* Geofencing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geofencing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F439A4AB2545C21200253CE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F439A4AD2545C21200253CE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F439A4AF2545C21200253CE0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F439A4AF2545C21200253CE0 /* STLMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLMainViewController.swift; sourceTree = "<group>"; };
 		F439A4B22545C21200253CE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F439A4B42545C21500253CE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F439A4B72545C21500253CE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +53,10 @@
 		F439A4C92545C21500253CE0 /* GeofencingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeofencingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F439A4CD2545C21500253CE0 /* GeofencingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingUITests.swift; sourceTree = "<group>"; };
 		F439A4CF2545C21500253CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F439A4E52545DFA700253CE0 /* STLMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLMapAnnotation.swift; sourceTree = "<group>"; };
+		F439A4ED2545E3CD00253CE0 /* STLLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLLocationViewModel.swift; sourceTree = "<group>"; };
+		F4894AFB2546F47200834DB3 /* MKMapView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Utilities.swift"; sourceTree = "<group>"; };
+		F4899FBE2547FE8000B140C2 /* UIViewController+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utilities.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +107,12 @@
 		F439A4AA2545C21200253CE0 /* Geofencing */ = {
 			isa = PBXGroup;
 			children = (
+				F4894B002546F47900834DB3 /* Extensions */,
+				F439A4E52545DFA700253CE0 /* STLMapAnnotation.swift */,
+				F439A4ED2545E3CD00253CE0 /* STLLocationViewModel.swift */,
 				F439A4AB2545C21200253CE0 /* AppDelegate.swift */,
 				F439A4AD2545C21200253CE0 /* SceneDelegate.swift */,
-				F439A4AF2545C21200253CE0 /* ViewController.swift */,
+				F439A4AF2545C21200253CE0 /* STLMainViewController.swift */,
 				F439A4B12545C21200253CE0 /* Main.storyboard */,
 				F439A4B42545C21500253CE0 /* Assets.xcassets */,
 				F439A4B62545C21500253CE0 /* LaunchScreen.storyboard */,
@@ -126,6 +137,15 @@
 				F439A4CF2545C21500253CE0 /* Info.plist */,
 			);
 			path = GeofencingUITests;
+			sourceTree = "<group>";
+		};
+		F4894B002546F47900834DB3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F4894AFB2546F47200834DB3 /* MKMapView+Utilities.swift */,
+				F4899FBE2547FE8000B140C2 /* UIViewController+Utilities.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +278,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F439A4B02545C21200253CE0 /* ViewController.swift in Sources */,
+				F4894AFC2546F47200834DB3 /* MKMapView+Utilities.swift in Sources */,
+				F439A4EE2545E3CD00253CE0 /* STLLocationViewModel.swift in Sources */,
+				F439A4B02545C21200253CE0 /* STLMainViewController.swift in Sources */,
+				F439A4E62545DFA700253CE0 /* STLMapAnnotation.swift in Sources */,
 				F439A4AC2545C21200253CE0 /* AppDelegate.swift in Sources */,
 				F439A4AE2545C21200253CE0 /* SceneDelegate.swift in Sources */,
+				F4899FBF2547FE8000B140C2 /* UIViewController+Utilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +390,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -421,7 +445,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -437,6 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N9PSXS9XTK;
 				INFOPLIST_FILE = Geofencing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -455,6 +480,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N9PSXS9XTK;
 				INFOPLIST_FILE = Geofencing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

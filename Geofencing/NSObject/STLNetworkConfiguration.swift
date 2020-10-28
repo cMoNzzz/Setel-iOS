@@ -22,7 +22,7 @@ public final class STLNetworkConfiguration: NEHotspotConfiguration {
                 self.handleConnectingError(errorCode: errorCode ?? .unknown)
 
             } else {
-                if self.availableSSIDs().first == ssid {
+                if self.retrieveCurrentSSID() == ssid {
                     UIViewController.displayAlert("Success Connected to - \(ssid)")
                 } else {
                     UIViewController.displayAlert("\(ssid) - Not found")
@@ -30,21 +30,25 @@ public final class STLNetworkConfiguration: NEHotspotConfiguration {
             }
         }
     }
-
-    private func availableSSIDs() -> [String] {
-        guard let interfaceNames = CNCopySupportedInterfaces() as? [String] else {
-            return []
-        }
-        return interfaceNames.compactMap { name in
-            guard let info = CNCopyCurrentNetworkInfo(name as CFString) as? [String: AnyObject] else {
-                return nil
-            }
-            guard let ssid = info[kCNNetworkInfoKeySSID as String] as? String else {
-                return nil
-            }
-            return ssid
-        }
+    
+    private func retrieveCurrentSSID() -> String? {
+        let interfaces = CNCopySupportedInterfaces() as? [String]
+        let interface = interfaces?
+            .compactMap { [weak self] in self?.retrieveInterfaceInfo(from: $0) }
+            .first
+        
+        return interface
     }
+    
+    private func retrieveInterfaceInfo(from interface: String) -> String? {
+        guard let interfaceInfo = CNCopyCurrentNetworkInfo(interface as CFString) as? [String: AnyObject],
+            let ssid = interfaceInfo[kCNNetworkInfoKeySSID as String] as? String
+            else {
+                return nil
+        }
+        return ssid
+    }
+    
 
     private func handleConnectingError(errorCode: NEHotspotConfigurationError) {
         var errorMessage = ""

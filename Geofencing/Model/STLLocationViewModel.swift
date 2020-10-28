@@ -24,6 +24,23 @@ public class STLLocationViewModel: NSObject, ObservableObject {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
+    
+    public func startMonitoring(annotation: STLMapAnnotation) {
+      if !CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
+        UIViewController.displayAlert("Not supported")
+        return
+      }
+            
+      let newRegion = region(with: annotation)
+      locationManager.startMonitoring(for: newRegion)
+    }
+    
+    private func region(with annotation: STLMapAnnotation) -> CLCircularRegion {
+      let region = CLCircularRegion(center: annotation.coordinate, radius: annotation.radius, identifier: annotation.identifier ?? "")
+      region.notifyOnEntry = true
+      region.notifyOnExit = true
+      return region
+    }
 }
 
 extension STLLocationViewModel: CLLocationManagerDelegate {
@@ -44,5 +61,13 @@ extension STLLocationViewModel: CLLocationManagerDelegate {
 
     public func locationManager(_: CLLocationManager, didFailWithError error: Error) {
         UIViewController.displayAlert("Location Failed with Error \(error)")
+    }
+    
+    public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        UIViewController.displayAlert("Enter Region")
+    }
+    
+    public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        UIViewController.displayAlert("Exit Region")
     }
 }

@@ -25,13 +25,13 @@ public final class STLMainViewController: UIViewController {
         mapView.delegate = self
 
         viewModel.$coordinate.receive(on: DispatchQueue.main).sink { coordinate in
-            print("Coor 2 \(coordinate)")
+            print("Coor \(coordinate)")
         }.store(in: &disposeBag)
 
         viewModel.$status.receive(on: DispatchQueue.main).sink { status in
 
             if status == .authorizedAlways || status == .authorizedWhenInUse {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.zoomToUserLocation()
                 }
             }
@@ -71,7 +71,7 @@ extension STLMainViewController: STLAddAnnotationDelegate {
         let rad = min(radius, viewModel.locationManager.maximumRegionMonitoringDistance)
         let annotation = STLMapAnnotation(coordinate: coordinate, radius: rad, identifier: identifier)
         addAnnotation(annotation)
-        print("Radius \(coordinate)")
+        viewModel.startMonitoring(annotation: annotation)
     }
 }
 

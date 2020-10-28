@@ -31,7 +31,7 @@ extension STLAddGeofenceViewController {
 
     @IBAction func onAddAnnotation(_: Any) {
         let coordinate = mapView.centerCoordinate
-        let radius = Double(radiusTextField.text!) ?? 0
+        let radius = Double(radiusTextField.text ?? "100") ?? 0
         let identifier = NSUUID().uuidString
 
         delegate?.didAddAnnotation(self, coordinate: coordinate, radius: radius, identifier: identifier)

@@ -38,6 +38,17 @@ public final class STLMainViewController: UIViewController {
                 }
             }
         }.store(in: &disposeBag)
+        
+        viewModel.$regionState.receive(on: DispatchQueue.main).sink { regionState in
+            switch regionState {
+            case .enter:
+                self.title = "Inside"
+            case .exit:
+                self.title = "Outside"
+            default:
+                self.title = ""
+            }
+        }.store(in: &disposeBag)
     }
 
     private func zoomToUserLocation() {

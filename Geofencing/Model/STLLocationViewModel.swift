@@ -10,11 +10,18 @@ import CoreLocation
 import Foundation
 import UIKit
 
+public enum RegionState: Int {
+    case enter
+    case exit
+    case none
+}
+
 public class STLLocationViewModel: NSObject, ObservableObject {
     public var locationManager = CLLocationManager()
 
     @Published var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     @Published var status = CLAuthorizationStatus.notDetermined
+    @Published var regionState = RegionState.none
 
     override public init() {
         super.init()
@@ -53,21 +60,21 @@ extension STLLocationViewModel: CLLocationManagerDelegate {
         self.status = status
     }
 
-    public func locationManager(_: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError _: Error) {
-        guard let identifier = region?.identifier else { return }
-
-        UIViewController.displayAlert("Monitoring failed with identifier \(identifier)")
-    }
-
     public func locationManager(_: CLLocationManager, didFailWithError error: Error) {
         UIViewController.displayAlert("Location Failed with Error \(error)")
     }
-
-    public func locationManager(_: CLLocationManager, didEnterRegion _: CLRegion) {
-        UIViewController.displayAlert("Enter Region")
+    
+    public func locationManager(_: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError _: Error) {
+        guard let identifier = region?.identifier else { return }
+        regionState = .none
+        UIViewController.displayAlert("Monitoring failed with identifier \(identifier)")
     }
 
-    public func locationManager(_: CLLocationManager, didExitRegion _: CLRegion) {
-        UIViewController.displayAlert("Exit Region")
+    public func locationManager(_: CLLocationManager, didEnterRegion region: CLRegion) {
+        regionState = .enter
+    }
+
+    public func locationManager(_: CLLocationManager, didExitRegion region: CLRegion) {
+        regionState = .exit
     }
 }

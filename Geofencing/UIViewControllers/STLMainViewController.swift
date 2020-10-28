@@ -11,6 +11,8 @@ import UIKit
 
 public final class STLMainViewController: UIViewController {
     let viewModel = STLLocationViewModel()
+    let networkConfiguration = STLNetworkConfiguration()
+
     private var disposeBag: Set<AnyCancellable> = []
 
     @IBOutlet var mapView: MKMapView!
@@ -42,6 +44,15 @@ public final class STLMainViewController: UIViewController {
         mapView.zoomToUserLocation()
     }
 
+    private func addAnnotation(_ annotation: STLMapAnnotation) {
+        mapView.addAnnotation(annotation)
+        addRadiusOverlay(forAnnotation: annotation)
+    }
+
+    private func addRadiusOverlay(forAnnotation annotation: STLMapAnnotation) {
+        mapView?.addOverlay(MKCircle(center: annotation.coordinate, radius: annotation.radius))
+    }
+
     @IBAction func onTapCurrentLocation(_: Any) {
         zoomToUserLocation()
     }
@@ -54,13 +65,13 @@ public final class STLMainViewController: UIViewController {
         }
     }
 
-    private func addAnnotation(_ annotation: STLMapAnnotation) {
-        mapView.addAnnotation(annotation)
-        addRadiusOverlay(forAnnotation: annotation)
-    }
-
-    private func addRadiusOverlay(forAnnotation annotation: STLMapAnnotation) {
-        mapView?.addOverlay(MKCircle(center: annotation.coordinate, radius: annotation.radius))
+    @IBAction func connectToSpecificNetwork(_: Any) {
+        let loginController = UIAlertController.promptLogin { _ in
+            // Handle cancel action
+        } loginHandler: { _, ssid, password in
+            self.networkConfiguration.connectWifi(ssid: ssid, password: password)
+        }
+        present(loginController, animated: true, completion: nil)
     }
 }
 

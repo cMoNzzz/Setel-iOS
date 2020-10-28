@@ -24,22 +24,22 @@ public class STLLocationViewModel: NSObject, ObservableObject {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
-    
+
     public func startMonitoring(annotation: STLMapAnnotation) {
-      if !CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
-        UIViewController.displayAlert("Not supported")
-        return
-      }
-            
-      let newRegion = region(with: annotation)
-      locationManager.startMonitoring(for: newRegion)
+        if !CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
+            UIViewController.displayAlert("Not supported")
+            return
+        }
+
+        let newRegion = region(with: annotation)
+        locationManager.startMonitoring(for: newRegion)
     }
-    
+
     private func region(with annotation: STLMapAnnotation) -> CLCircularRegion {
-      let region = CLCircularRegion(center: annotation.coordinate, radius: annotation.radius, identifier: annotation.identifier ?? "")
-      region.notifyOnEntry = true
-      region.notifyOnExit = true
-      return region
+        let region = CLCircularRegion(center: annotation.coordinate, radius: annotation.radius, identifier: annotation.identifier ?? "")
+        region.notifyOnEntry = true
+        region.notifyOnExit = true
+        return region
     }
 }
 
@@ -62,12 +62,12 @@ extension STLLocationViewModel: CLLocationManagerDelegate {
     public func locationManager(_: CLLocationManager, didFailWithError error: Error) {
         UIViewController.displayAlert("Location Failed with Error \(error)")
     }
-    
-    public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+
+    public func locationManager(_: CLLocationManager, didEnterRegion _: CLRegion) {
         UIViewController.displayAlert("Enter Region")
     }
-    
-    public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+
+    public func locationManager(_: CLLocationManager, didExitRegion _: CLRegion) {
         UIViewController.displayAlert("Exit Region")
     }
 }

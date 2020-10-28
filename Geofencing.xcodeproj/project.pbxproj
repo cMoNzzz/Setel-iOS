@@ -17,6 +17,9 @@
 		F439A4CE2545C21500253CE0 /* GeofencingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F439A4CD2545C21500253CE0 /* GeofencingUITests.swift */; };
 		F439A4E62545DFA700253CE0 /* STLMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F439A4E52545DFA700253CE0 /* STLMapAnnotation.swift */; };
 		F439A4EE2545E3CD00253CE0 /* STLLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F439A4ED2545E3CD00253CE0 /* STLLocationViewModel.swift */; };
+		F47702DE254997530004F6DD /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F47702DD254997530004F6DD /* NetworkExtension.framework */; };
+		F47702E3254997EE0004F6DD /* STLNetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47702E2254997EE0004F6DD /* STLNetworkConfiguration.swift */; };
+		F47702EF2549B1670004F6DD /* UIViewController+Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47702EE2549B1670004F6DD /* UIViewController+Credential.swift */; };
 		F4894AFC2546F47200834DB3 /* MKMapView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4894AFB2546F47200834DB3 /* MKMapView+Utilities.swift */; };
 		F4899FBF2547FE8000B140C2 /* UIViewController+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4899FBE2547FE8000B140C2 /* UIViewController+Utilities.swift */; };
 		F4899FCF2548062500B140C2 /* STLAddGeofenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4899FCE2548062500B140C2 /* STLAddGeofenceViewController.swift */; };
@@ -58,6 +61,10 @@
 		F439A4CF2545C21500253CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F439A4E52545DFA700253CE0 /* STLMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLMapAnnotation.swift; sourceTree = "<group>"; };
 		F439A4ED2545E3CD00253CE0 /* STLLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLLocationViewModel.swift; sourceTree = "<group>"; };
+		F47702DB254997530004F6DD /* Geofencing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Geofencing.entitlements; sourceTree = "<group>"; };
+		F47702DD254997530004F6DD /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		F47702E2254997EE0004F6DD /* STLNetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLNetworkConfiguration.swift; sourceTree = "<group>"; };
+		F47702EE2549B1670004F6DD /* UIViewController+Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Credential.swift"; sourceTree = "<group>"; };
 		F4894AFB2546F47200834DB3 /* MKMapView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Utilities.swift"; sourceTree = "<group>"; };
 		F4899FBE2547FE8000B140C2 /* UIViewController+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utilities.swift"; sourceTree = "<group>"; };
 		F4899FCE2548062500B140C2 /* STLAddGeofenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLAddGeofenceViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F47702DE254997530004F6DD /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +105,7 @@
 				F439A4C12545C21500253CE0 /* GeofencingTests */,
 				F439A4CC2545C21500253CE0 /* GeofencingUITests */,
 				F439A4A92545C21200253CE0 /* Products */,
+				F47702DC254997530004F6DD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,6 +122,7 @@
 		F439A4AA2545C21200253CE0 /* Geofencing */ = {
 			isa = PBXGroup;
 			children = (
+				F47702DB254997530004F6DD /* Geofencing.entitlements */,
 				F4899FEB254849E100B140C2 /* NSObject */,
 				F4899FE2254841F700B140C2 /* Protocol */,
 				F4894B002546F47900834DB3 /* Extensions */,
@@ -146,12 +156,21 @@
 			path = GeofencingUITests;
 			sourceTree = "<group>";
 		};
+		F47702DC254997530004F6DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F47702DD254997530004F6DD /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F4894B002546F47900834DB3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				F4899FDA25482E8400B140C2 /* Ultilities.swift */,
 				F4894AFB2546F47200834DB3 /* MKMapView+Utilities.swift */,
 				F4899FBE2547FE8000B140C2 /* UIViewController+Utilities.swift */,
+				F47702EE2549B1670004F6DD /* UIViewController+Credential.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -185,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				F439A4E52545DFA700253CE0 /* STLMapAnnotation.swift */,
+				F47702E2254997EE0004F6DD /* STLNetworkConfiguration.swift */,
 			);
 			path = NSObject;
 			sourceTree = "<group>";
@@ -323,10 +343,12 @@
 				F4894AFC2546F47200834DB3 /* MKMapView+Utilities.swift in Sources */,
 				F439A4EE2545E3CD00253CE0 /* STLLocationViewModel.swift in Sources */,
 				F439A4B02545C21200253CE0 /* STLMainViewController.swift in Sources */,
+				F47702EF2549B1670004F6DD /* UIViewController+Credential.swift in Sources */,
 				F439A4E62545DFA700253CE0 /* STLMapAnnotation.swift in Sources */,
 				F4899FCF2548062500B140C2 /* STLAddGeofenceViewController.swift in Sources */,
 				F4899FE42548428E00B140C2 /* STLAddAnnotationProtocol.swift in Sources */,
 				F439A4AC2545C21200253CE0 /* AppDelegate.swift in Sources */,
+				F47702E3254997EE0004F6DD /* STLNetworkConfiguration.swift in Sources */,
 				F439A4AE2545C21200253CE0 /* SceneDelegate.swift in Sources */,
 				F4899FBF2547FE8000B140C2 /* UIViewController+Utilities.swift in Sources */,
 			);
@@ -504,6 +526,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Geofencing/Geofencing.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N9PSXS9XTK;
 				INFOPLIST_FILE = Geofencing/Info.plist;
@@ -523,6 +546,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Geofencing/Geofencing.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N9PSXS9XTK;
 				INFOPLIST_FILE = Geofencing/Info.plist;

@@ -53,7 +53,21 @@ public final class STLMainViewController: UIViewController {
     private func addRadiusOverlay(forAnnotation annotation: STLMapAnnotation) {
         mapView?.addOverlay(MKCircle(center: annotation.coordinate, radius: annotation.radius))
     }
-
+    
+    private func removeAnnotation(for annotation:STLMapAnnotation) {
+        mapView.removeAnnotation(annotation)
+        
+        guard let overlays = mapView?.overlays else { return }
+        for overlay in overlays {
+          guard let circleOverlay = overlay as? MKCircle else { continue }
+          let coord = circleOverlay.coordinate
+          if coord.latitude == annotation.coordinate.latitude && coord.longitude == annotation.coordinate.longitude && circleOverlay.radius == annotation.radius {
+            mapView?.removeOverlay(circleOverlay)
+            break
+          }
+        }
+    }
+    
     @IBAction func onTapCurrentLocation(_: Any) {
         zoomToUserLocation()
     }
@@ -81,7 +95,7 @@ extension STLMainViewController: STLAddAnnotationDelegate {
         controller.dismiss(animated: true, completion: nil)
 
         let rad = min(radius, viewModel.locationManager.maximumRegionMonitoringDistance)
-        let annotation = STLMapAnnotation(coordinate: coordinate, radius: rad, identifier: identifier)
+        let annotation = STLMapAnnotation(coordinate: coordinate, radius: rad, title: "Geofence Area", identifier: identifier)
         addAnnotation(annotation)
         viewModel.startMonitoring(annotation: annotation)
     }
@@ -97,5 +111,31 @@ extension STLMainViewController: MKMapViewDelegate {
             return circleRenderer
         }
         return MKOverlayRenderer(overlay: overlay)
+    }
+    
+    public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+      let identifier = "STLAnnotation"
+      if annotation is STLMapAnnotation {
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+        if annotationView == nil {
+          annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+          annotationView?.canShowCallout = true
+          let removeButton = UIButton(type: .custom)
+          removeButton.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
+          removeButton.setImage(UIImage(named: "delete-icon"), for: .normal)
+          annotationView?.leftCalloutAccessoryView = removeButton
+        } else {
+          annotationView?.annotation = annotation
+        }
+        return annotationView
+      }
+      return nil
+    }
+    
+    public func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+
+        if let annotation = view.annotation as? STLMapAnnotation {
+            removeAnnotation(for: annotation)
+        }
     }
 }

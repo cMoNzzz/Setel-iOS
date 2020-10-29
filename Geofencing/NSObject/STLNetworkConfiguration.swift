@@ -26,6 +26,7 @@ public final class STLNetworkConfiguration: NEHotspotConfiguration {
 
     override public init() {
         super.init()
+        startMonitoringNetwork()
     }
 
     @available(*, unavailable)
@@ -124,6 +125,7 @@ extension STLNetworkConfiguration {
         case .joinOnceNotSupported:
             errorMessage = "Join once not supported"
         default:
+            specificSSID = retrieveCurrentSSID()
             errorMessage = "Connection already established"
         }
 

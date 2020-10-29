@@ -13,7 +13,7 @@ public class STLMapAnnotation: NSObject, MKAnnotation {
     public var radius: CLLocationDistance
     public var identifier: String?
     public var title: String?
-    
+
     public init(coordinate: CLLocationCoordinate2D,
                 radius: CLLocationDistance,
                 title: String,

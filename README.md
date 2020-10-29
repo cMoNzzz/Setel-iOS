@@ -18,11 +18,11 @@ Setel Assignment
 
 <!-- GETTING STARTED -->
 ## Getting Started
-1. Run the project with your device or simulator
-2. Allow Location Permission for the app to detect your curent location 
-3. You can also fake your location to do some testing - (GPX files are provided in the code, you can simulate a fake location by using it)
-4. Connect to a specific Wi-FI by selecting the ```Wi-Fi``` button on top right of the navigation bar and Wi-Fi ```SSID``` and ```Password``` to connect to the network
-5. Add a geofence area by pressing the ```+``` button on the top right and set the radius of the geofence area and place it to where you want to add in the Map. Default is 100
+1. Run the project with your device or simulator and disconnect all Wi-Fi connection. 
+2. Allow Location Permission for the app to detect your curent location .
+3. You can also fake your location to do some testing - (GPX files are provided in the code, you can simulate a fake location by using it).
+4. Connect to a specific Wi-FI by selecting the ```Wi-Fi``` button on top right of the navigation bar and Wi-Fi ```SSID``` and ```Password``` to connect to the network. Without setting this , the project will not able to detect the specific Wi-Fi and it will not work as expected with the ```Current Status``` tracking.
+5. Add a geofence area by pressing the ```+``` button on the top right and set the radius of the geofence area and place it to where you want to add in the Map. Default is 100.
 
 <!-- USAGE -->
 ## Usage

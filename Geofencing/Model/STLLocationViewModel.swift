@@ -77,7 +77,6 @@ extension STLLocationViewModel: CLLocationManagerDelegate {
         if regionState != .enter {
             regionState = .enter
             insideGeofenceRadius = true
-            networkConfiguration.startMonitoringNetwork()
         }
     }
 
@@ -86,12 +85,9 @@ extension STLLocationViewModel: CLLocationManagerDelegate {
             regionState = .exit
 
             if networkConfiguration.networkType == .wifi {
-                let connected = networkConfiguration.retrieveCurrentSSID() == networkConfiguration.getSpecificSSID()
-                insideGeofenceRadius = connected
-
+                insideGeofenceRadius = networkConfiguration.retrieveCurrentSSID() == networkConfiguration.getSpecificSSID()
             } else {
                 insideGeofenceRadius = false
-                networkConfiguration.stopMonitoringNetwork()
             }
         }
     }

@@ -11,7 +11,6 @@ import UIKit
 
 public final class STLMainViewController: UIViewController {
     let viewModel = STLLocationViewModel()
-    let networkConfiguration = STLNetworkConfiguration()
 
     private var disposeBag: Set<AnyCancellable> = []
 
@@ -26,10 +25,6 @@ public final class STLMainViewController: UIViewController {
     private func setup() {
         mapView.delegate = self
 
-        viewModel.$coordinate.receive(on: DispatchQueue.main).sink { coordinate in
-            print("Coor \(coordinate)")
-        }.store(in: &disposeBag)
-
         viewModel.$status.receive(on: DispatchQueue.main).sink { status in
 
             if status == .authorizedAlways || status == .authorizedWhenInUse {
@@ -38,16 +33,11 @@ public final class STLMainViewController: UIViewController {
                 }
             }
         }.store(in: &disposeBag)
-        
-        viewModel.$regionState.receive(on: DispatchQueue.main).sink { regionState in
-            switch regionState {
-            case .enter:
-                self.title = "Inside"
-            case .exit:
-                self.title = "Outside"
-            default:
-                self.title = ""
-            }
+
+        viewModel.$insideGeofenceRadius.receive(on: DispatchQueue.main).sink { inside in
+
+            self.title = inside ? "Current Status: Inside" : "Current Status: Outside"
+
         }.store(in: &disposeBag)
     }
 
@@ -80,7 +70,7 @@ public final class STLMainViewController: UIViewController {
         let loginController = UIAlertController.promptLogin { _ in
             // Handle cancel action
         } loginHandler: { _, ssid, password in
-            self.networkConfiguration.connectWifi(ssid: ssid, password: password)
+            self.viewModel.networkConfiguration.connectWifi(ssid: ssid, password: password)
         }
         present(loginController, animated: true, completion: nil)
     }

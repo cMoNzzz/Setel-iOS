@@ -19,7 +19,7 @@
 		F439A4EE2545E3CD00253CE0 /* STLLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F439A4ED2545E3CD00253CE0 /* STLLocationViewModel.swift */; };
 		F47702DE254997530004F6DD /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F47702DD254997530004F6DD /* NetworkExtension.framework */; };
 		F47702E3254997EE0004F6DD /* STLNetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47702E2254997EE0004F6DD /* STLNetworkConfiguration.swift */; };
-		F47702EF2549B1670004F6DD /* UIViewController+Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47702EE2549B1670004F6DD /* UIViewController+Credential.swift */; };
+		F47702EF2549B1670004F6DD /* UIAlertController+Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47702EE2549B1670004F6DD /* UIAlertController+Credential.swift */; };
 		F47703012549C6BB0004F6DD /* SimulatedLocations.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F47702FE2549C6BB0004F6DD /* SimulatedLocations.gpx */; };
 		F47703022549C6BB0004F6DD /* Google.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F47702FF2549C6BB0004F6DD /* Google.gpx */; };
 		F47703032549C6BB0004F6DD /* Apple.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F47703002549C6BB0004F6DD /* Apple.gpx */; };
@@ -67,7 +67,7 @@
 		F47702DB254997530004F6DD /* Geofencing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Geofencing.entitlements; sourceTree = "<group>"; };
 		F47702DD254997530004F6DD /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		F47702E2254997EE0004F6DD /* STLNetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLNetworkConfiguration.swift; sourceTree = "<group>"; };
-		F47702EE2549B1670004F6DD /* UIViewController+Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Credential.swift"; sourceTree = "<group>"; };
+		F47702EE2549B1670004F6DD /* UIAlertController+Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Credential.swift"; sourceTree = "<group>"; };
 		F47702FE2549C6BB0004F6DD /* SimulatedLocations.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SimulatedLocations.gpx; sourceTree = "<group>"; };
 		F47702FF2549C6BB0004F6DD /* Google.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Google.gpx; sourceTree = "<group>"; };
 		F47703002549C6BB0004F6DD /* Apple.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Apple.gpx; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 				F4899FDA25482E8400B140C2 /* Ultilities.swift */,
 				F4894AFB2546F47200834DB3 /* MKMapView+Utilities.swift */,
 				F4899FBE2547FE8000B140C2 /* UIViewController+Utilities.swift */,
-				F47702EE2549B1670004F6DD /* UIViewController+Credential.swift */,
+				F47702EE2549B1670004F6DD /* UIAlertController+Credential.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -363,7 +363,7 @@
 				F4894AFC2546F47200834DB3 /* MKMapView+Utilities.swift in Sources */,
 				F439A4EE2545E3CD00253CE0 /* STLLocationViewModel.swift in Sources */,
 				F439A4B02545C21200253CE0 /* STLMainViewController.swift in Sources */,
-				F47702EF2549B1670004F6DD /* UIViewController+Credential.swift in Sources */,
+				F47702EF2549B1670004F6DD /* UIAlertController+Credential.swift in Sources */,
 				F439A4E62545DFA700253CE0 /* STLMapAnnotation.swift in Sources */,
 				F4899FCF2548062500B140C2 /* STLAddGeofenceViewController.swift in Sources */,
 				F4899FE42548428E00B140C2 /* STLAddAnnotationProtocol.swift in Sources */,

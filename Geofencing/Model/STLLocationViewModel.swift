@@ -21,7 +21,10 @@ public class STLLocationViewModel: NSObject, ObservableObject {
 
     @Published var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     @Published var status = CLAuthorizationStatus.notDetermined
-    @Published var regionState = RegionState.none
+    @Published var insideGeofenceRadius = false
+
+    private var regionState = RegionState.none
+    let networkConfiguration = STLNetworkConfiguration()
 
     override public init() {
         super.init()
@@ -63,18 +66,33 @@ extension STLLocationViewModel: CLLocationManagerDelegate {
     public func locationManager(_: CLLocationManager, didFailWithError error: Error) {
         UIViewController.displayAlert("Location Failed with Error \(error)")
     }
-    
+
     public func locationManager(_: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError _: Error) {
         guard let identifier = region?.identifier else { return }
         regionState = .none
         UIViewController.displayAlert("Monitoring failed with identifier \(identifier)")
     }
 
-    public func locationManager(_: CLLocationManager, didEnterRegion region: CLRegion) {
-        regionState = .enter
+    public func locationManager(_: CLLocationManager, didEnterRegion _: CLRegion) {
+        if regionState != .enter {
+            regionState = .enter
+            insideGeofenceRadius = true
+            networkConfiguration.startMonitoringNetwork()
+        }
     }
 
-    public func locationManager(_: CLLocationManager, didExitRegion region: CLRegion) {
-        regionState = .exit
+    public func locationManager(_: CLLocationManager, didExitRegion _: CLRegion) {
+        if regionState != .exit {
+            regionState = .exit
+
+            if networkConfiguration.networkType == .wifi {
+                let connected = networkConfiguration.retrieveCurrentSSID() == networkConfiguration.getSpecificSSID()
+                insideGeofenceRadius = connected
+
+            } else {
+                insideGeofenceRadius = false
+                networkConfiguration.stopMonitoringNetwork()
+            }
+        }
     }
 }

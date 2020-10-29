@@ -23,11 +23,11 @@
 		F47703012549C6BB0004F6DD /* SimulatedLocations.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F47702FE2549C6BB0004F6DD /* SimulatedLocations.gpx */; };
 		F47703022549C6BB0004F6DD /* Google.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F47702FF2549C6BB0004F6DD /* Google.gpx */; };
 		F47703032549C6BB0004F6DD /* Apple.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F47703002549C6BB0004F6DD /* Apple.gpx */; };
-		F4894AFC2546F47200834DB3 /* MKMapView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4894AFB2546F47200834DB3 /* MKMapView+Utilities.swift */; };
 		F4899FBF2547FE8000B140C2 /* UIViewController+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4899FBE2547FE8000B140C2 /* UIViewController+Utilities.swift */; };
 		F4899FCF2548062500B140C2 /* STLAddGeofenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4899FCE2548062500B140C2 /* STLAddGeofenceViewController.swift */; };
 		F4899FDB25482E8400B140C2 /* Ultilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4899FDA25482E8400B140C2 /* Ultilities.swift */; };
 		F4899FE42548428E00B140C2 /* STLAddAnnotationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4899FE32548428E00B140C2 /* STLAddAnnotationProtocol.swift */; };
+		F4965C95254AFEAC0047E8F5 /* STLMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4965C94254AFEAC0047E8F5 /* STLMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,11 +71,11 @@
 		F47702FE2549C6BB0004F6DD /* SimulatedLocations.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SimulatedLocations.gpx; sourceTree = "<group>"; };
 		F47702FF2549C6BB0004F6DD /* Google.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Google.gpx; sourceTree = "<group>"; };
 		F47703002549C6BB0004F6DD /* Apple.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Apple.gpx; sourceTree = "<group>"; };
-		F4894AFB2546F47200834DB3 /* MKMapView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Utilities.swift"; sourceTree = "<group>"; };
 		F4899FBE2547FE8000B140C2 /* UIViewController+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utilities.swift"; sourceTree = "<group>"; };
 		F4899FCE2548062500B140C2 /* STLAddGeofenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLAddGeofenceViewController.swift; sourceTree = "<group>"; };
 		F4899FDA25482E8400B140C2 /* Ultilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ultilities.swift; sourceTree = "<group>"; };
 		F4899FE32548428E00B140C2 /* STLAddAnnotationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLAddAnnotationProtocol.swift; sourceTree = "<group>"; };
+		F4965C94254AFEAC0047E8F5 /* STLMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				F47702DB254997530004F6DD /* Geofencing.entitlements */,
+				F4965C93254AFE9B0047E8F5 /* Views */,
 				F4899FEB254849E100B140C2 /* NSObject */,
 				F4899FE2254841F700B140C2 /* Protocol */,
 				F4894B002546F47900834DB3 /* Extensions */,
@@ -185,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				F4899FDA25482E8400B140C2 /* Ultilities.swift */,
-				F4894AFB2546F47200834DB3 /* MKMapView+Utilities.swift */,
 				F4899FBE2547FE8000B140C2 /* UIViewController+Utilities.swift */,
 				F47702EE2549B1670004F6DD /* UIAlertController+Credential.swift */,
 			);
@@ -224,6 +224,14 @@
 				F47702E2254997EE0004F6DD /* STLNetworkConfiguration.swift */,
 			);
 			path = NSObject;
+			sourceTree = "<group>";
+		};
+		F4965C93254AFE9B0047E8F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4965C94254AFEAC0047E8F5 /* STLMapView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,8 +368,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4899FDB25482E8400B140C2 /* Ultilities.swift in Sources */,
-				F4894AFC2546F47200834DB3 /* MKMapView+Utilities.swift in Sources */,
 				F439A4EE2545E3CD00253CE0 /* STLLocationViewModel.swift in Sources */,
+				F4965C95254AFEAC0047E8F5 /* STLMapView.swift in Sources */,
 				F439A4B02545C21200253CE0 /* STLMainViewController.swift in Sources */,
 				F47702EF2549B1670004F6DD /* UIAlertController+Credential.swift in Sources */,
 				F439A4E62545DFA700253CE0 /* STLMapAnnotation.swift in Sources */,

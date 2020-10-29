@@ -12,7 +12,7 @@ import UIKit
 public final class STLAddGeofenceViewController: UIViewController {
     public var delegate: STLAddAnnotationDelegate?
 
-    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var mapView: STLMapView!
     @IBOutlet var radiusTextField: UITextField!
 
     override public func viewDidLoad() {

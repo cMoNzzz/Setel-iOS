@@ -14,7 +14,7 @@ public final class STLMainViewController: UIViewController {
 
     private var disposeBag: Set<AnyCancellable> = []
 
-    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var mapView: STLMapView!
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ public final class STLMainViewController: UIViewController {
 
             if status == .authorizedAlways || status == .authorizedWhenInUse {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    self.zoomToUserLocation()
+                    self.mapView.zoomToUserLocation()
                 }
             }
         }.store(in: &disposeBag)
@@ -41,35 +41,8 @@ public final class STLMainViewController: UIViewController {
         }.store(in: &disposeBag)
     }
 
-    private func zoomToUserLocation() {
-        mapView.zoomToUserLocation()
-    }
-
-    private func addAnnotation(_ annotation: STLMapAnnotation) {
-        mapView.addAnnotation(annotation)
-        addRadiusOverlay(forAnnotation: annotation)
-    }
-
-    private func addRadiusOverlay(forAnnotation annotation: STLMapAnnotation) {
-        mapView?.addOverlay(MKCircle(center: annotation.coordinate, radius: annotation.radius))
-    }
-
-    private func removeAnnotation(for annotation: STLMapAnnotation) {
-        mapView.removeAnnotation(annotation)
-
-        guard let overlays = mapView?.overlays else { return }
-        for overlay in overlays {
-            guard let circleOverlay = overlay as? MKCircle else { continue }
-            let coord = circleOverlay.coordinate
-            if coord.latitude == annotation.coordinate.latitude, coord.longitude == annotation.coordinate.longitude, circleOverlay.radius == annotation.radius {
-                mapView?.removeOverlay(circleOverlay)
-                break
-            }
-        }
-    }
-
     @IBAction func onTapCurrentLocation(_: Any) {
-        zoomToUserLocation()
+        mapView.zoomToUserLocation()
     }
 
     @IBAction func onTapAddPin(_: Any) {
@@ -96,7 +69,7 @@ extension STLMainViewController: STLAddAnnotationDelegate {
 
         let rad = min(radius, viewModel.locationManager.maximumRegionMonitoringDistance)
         let annotation = STLMapAnnotation(coordinate: coordinate, radius: rad, title: "Geofence Area", identifier: identifier)
-        addAnnotation(annotation)
+        mapView.add(annotation: annotation)
         viewModel.startMonitoring(annotation: annotation)
     }
 }
@@ -134,7 +107,7 @@ extension STLMainViewController: MKMapViewDelegate {
 
     public func mapView(_: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped _: UIControl) {
         if let annotation = view.annotation as? STLMapAnnotation {
-            removeAnnotation(for: annotation)
+            mapView.removeAnnotation(annotation)
         }
     }
 }

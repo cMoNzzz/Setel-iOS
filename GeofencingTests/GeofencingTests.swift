@@ -5,12 +5,11 @@
 //  Created by Lam Si Mon on 20-10-25.
 //
 
-import XCTest
 import CoreLocation
 @testable import Geofencing
+import XCTest
 
 class GeofencingTests: XCTestCase {
-
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -26,20 +25,19 @@ class GeofencingTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
-    
-    
+
     func testLocationUpdate() {
         let locations: [CLLocation] = [CLLocation(latitude: 12, longitude: 10)]
-            
-            let viewModel = STLLocationViewModel()
-            
-            viewModel.locationManager(CLLocationManager(), didUpdateLocations: locations)
-            
-            XCTAssertEqual(12, viewModel.userLatitude)
-            XCTAssertEqual(10, viewModel.userLongitude)
-        }
+
+        let viewModel = STLLocationViewModel()
+
+        viewModel.locationManager(CLLocationManager(), didUpdateLocations: locations)
+
+        XCTAssertEqual(12, viewModel.userLatitude)
+        XCTAssertEqual(10, viewModel.userLongitude)
+    }
 }

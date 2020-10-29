@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIViewController {
-
     public static func topMostViewController() -> UIViewController? {
         return UIApplication
             .shared
@@ -27,7 +26,7 @@ extension UIViewController {
         }))
         alertController.presentSelfOnTopMostViewController(animated: true, completion: nil)
     }
-    
+
     public func presentSelfOnTopMostViewController(animated: Bool, completion: (() -> Void)?) {
         if let _ = UIViewController.topMostViewController() as? UIAlertController {
             UIViewController.topMostViewController()?.dismiss(animated: true, completion: {
@@ -35,12 +34,12 @@ extension UIViewController {
             })
             return
         }
-        
+
         DispatchQueue.main.async {
             UIViewController.topMostViewController()?.present(self, animated: animated, completion: completion)
         }
     }
-    
+
     public func topMostViewController() -> UIViewController {
         if let presented = presentedViewController {
             return presented.topMostViewController()
@@ -50,6 +49,10 @@ extension UIViewController {
         }
         return self
     }
-    
-}
 
+    public func load<T>(for _: T.Type) -> T? {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: String(describing: T.self)) as? T
+        return vc
+    }
+}

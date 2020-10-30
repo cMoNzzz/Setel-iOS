@@ -9,8 +9,7 @@ import Foundation
 import MapKit
 import UIKit
 
-public class STLMapView: MKMapView {
-    
+public final class STLMapView: MKMapView {
     public func zoomToUserLocation() {
         guard let coordinate = userLocation.location?.coordinate else { return }
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
@@ -19,25 +18,26 @@ public class STLMapView: MKMapView {
 
     public func add(annotation: STLMapAnnotation) {
         addAnnotation(annotation)
-        addRadiusOverlay(forAnnotation: annotation)
+        addRadiusOverlay(for: annotation)
     }
 
-    public func addRadiusOverlay(forAnnotation annotation: STLMapAnnotation) {
+    private func addRadiusOverlay(for annotation: STLMapAnnotation) {
         addOverlay(MKCircle(center: annotation.coordinate, radius: annotation.radius))
     }
 
     private func removeAnnotation(for annotation: STLMapAnnotation) {
         removeAnnotation(annotation)
-        
-        for overlay in self.overlays {
+
+        for overlay in overlays {
             guard let circleOverlay = overlay as? MKCircle else { continue }
             let coord = circleOverlay.coordinate
-            if coord.latitude == annotation.coordinate.latitude, coord.longitude == annotation.coordinate.longitude, circleOverlay.radius == annotation.radius {
+            if coord.latitude == annotation.coordinate.latitude,
+                coord.longitude == annotation.coordinate.longitude,
+                circleOverlay.radius == annotation.radius
+            {
                 removeOverlay(circleOverlay)
                 break
             }
         }
     }
-    
 }
-

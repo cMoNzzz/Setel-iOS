@@ -37,7 +37,7 @@ class GeofencingTests: XCTestCase {
 
         viewModel.locationManager(CLLocationManager(), didUpdateLocations: locations)
 
-        XCTAssertEqual(12, viewModel.userLatitude)
-        XCTAssertEqual(10, viewModel.userLongitude)
+        XCTAssertEqual(12, viewModel.coordinate.latitude)
+        XCTAssertEqual(10, viewModel.coordinate.longitude)
     }
 }

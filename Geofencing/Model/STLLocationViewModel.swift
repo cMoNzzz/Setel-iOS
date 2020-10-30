@@ -16,7 +16,7 @@ public enum RegionState: Int {
     case none
 }
 
-public class STLLocationViewModel: NSObject, ObservableObject {
+public final class STLLocationViewModel: NSObject, ObservableObject {
     public var locationManager = CLLocationManager()
 
     @Published var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
